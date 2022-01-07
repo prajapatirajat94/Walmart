@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Walmart" guice-stage="DEVELOPMENT" parallel="tests">
+<listeners>
+<listener class-name="listener.Extentreportlistener"/>
+</listeners>
+  <test thread-count="5" name="Walamart login test" verbose="2">
+    <classes>
+      <class name="walmart.testlayer.Logintest">
+       
+      </class> 
+    </classes>
+  </test> 
+</suite> 
