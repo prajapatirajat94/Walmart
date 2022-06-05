@@ -30,7 +30,7 @@ public static Actions action;
 	@FindBy (xpath="//div[contains(text(),'You must read and accept Walmart’s Terms of Use to subscribe.')]") WebElement ErrTandC;
 	
 	public PomLoginpage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getdriver(), this);
 	}
 	
 	public void tpFirstname(String fname) {
@@ -86,7 +86,7 @@ public static Actions action;
 		Marketpref.click();
 	}
 	public void checkboxMarketunchec() {
-		action = new Actions(driver);
+		action = new Actions(getdriver());
 		action.doubleClick(Marketpref).perform();	
 	}
 	public boolean CheckboxMarketconfirm() {
@@ -99,7 +99,7 @@ public static Actions action;
 		return Termsandcondition.isSelected();
 	}
 	public void checkbox_Tandcunchecunchecked() {
-		action = new Actions(driver);
+		action = new Actions(getdriver());
 		action.moveToElement(Termsandcondition).doubleClick(Termsandcondition).build().perform();
 	}
 	

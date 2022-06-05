@@ -18,9 +18,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import walmart.utils.Walmartutils;
 
 public class Walmartbasepackage {
-	public static WebDriver driver;
+	//public static WebDriver driver;
 	public static Properties prop;
-
+public static  ThreadLocal<WebDriver>tldriver = new ThreadLocal<WebDriver>(); 
 	public Walmartbasepackage(){
 		try {
 		FileInputStream file = new FileInputStream("C:\\Users\\praja\\eclipse-workspace\\Walmart_Project\\src\\test\\java\\"
@@ -40,18 +40,21 @@ public class Walmartbasepackage {
 		String browsername = prop.getProperty("browser");
 		if(browsername.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			driver= new ChromeDriver();		
+			tldriver.set(new ChromeDriver());		
 		}	
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(Walmartutils.Pageloadtime, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(Walmartutils.Implicitytime, TimeUnit.SECONDS);
-		driver.manage().deleteAllCookies();	
+		getdriver().manage().window().maximize();
+		getdriver().manage().timeouts().pageLoadTimeout(Walmartutils.Pageloadtime, TimeUnit.SECONDS);
+		getdriver().manage().timeouts().implicitlyWait(Walmartutils.Implicitytime, TimeUnit.SECONDS);
+		getdriver().manage().deleteAllCookies();	
 		
+	}
+	public static synchronized WebDriver getdriver() {
+		return tldriver.get();
 	}
 	
 	public  String getScreenshot() {
 		
-		File file =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File file =((TakesScreenshot)getdriver()).getScreenshotAs(OutputType.FILE);
 		String path= "C:\\Users\\praja\\eclipse-workspace\\Walmart_Project\\src\\test\\java\\walmart.Screenshot"+System.currentTimeMillis()+".jpg";
 		try {
 			FileUtils.copyFile(file, new File(path));

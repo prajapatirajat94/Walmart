@@ -21,15 +21,15 @@ public Usertest() {
 @BeforeMethod	
 public void openbrowser() {
 		initialize();
-		driver.get(prop.getProperty("url1"));
+		getdriver().get(prop.getProperty("url1"));
 	}
 @Test
 public void searchbox() throws InterruptedException {
-Actions action = new Actions(driver);
-	driver.findElement(By.xpath("//input[@class ='e1xoeh2i1 css-1c5nwkv eesbt950']")).sendKeys("apple")	;
-	driver.findElement(By.xpath("//button[@class ='css-1v9c0kj e1xoeh2i2']")).click();
+Actions action = new Actions(getdriver());
+getdriver().findElement(By.xpath("//input[@class ='e1xoeh2i1 css-1c5nwkv eesbt950']")).sendKeys("apple")	;
+getdriver().findElement(By.xpath("//button[@class ='css-1v9c0kj e1xoeh2i2']")).click();
 	Thread.sleep(10000);
-	List<WebElement> lt = driver.findElements(By.xpath("//div[@id='product-results']//child::div[@class='css-1fnwt3w epettpn0']"));
+	List<WebElement> lt = getdriver().findElements(By.xpath("//div[@id='product-results']//child::div[@class='css-1fnwt3w epettpn0']"));
 	int sizer = lt.size();
 	System.out.println(sizer);
 }

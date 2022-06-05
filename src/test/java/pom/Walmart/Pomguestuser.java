@@ -9,7 +9,7 @@ public class Pomguestuser extends Walmartbasepackage {
 
 	
 public Pomguestuser() {
-	PageFactory.initElements(driver, this);
+	PageFactory.initElements(getdriver(), this);
 }
 	
 	

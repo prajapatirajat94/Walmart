@@ -36,7 +36,7 @@ public class Logintest extends Walmartbasepackage {
 	@BeforeMethod
 	public void openwalmartsignuppage() {
 		initialize();
-		driver.get(prop.getProperty("url"));	
+		getdriver().get(prop.getProperty("url"));	
 		login = new PomLoginpage();
 	}
 
@@ -147,7 +147,7 @@ public void Login_TC15PasswordcombinationCharonly() {
 }
 @Test(priority=17)
 public void Login_TC17passwordinvisibilitysecurity() {	
-	WebElement pvisiblity = driver.findElement(By.id("password"));
+	WebElement pvisiblity = getdriver().findElement(By.id("password"));
 	boolean pswrddots= pvisiblity.getAttribute("type").equals("password");
 	Assert.assertEquals(pswrddots, true);
 }
@@ -155,7 +155,7 @@ public void Login_TC17passwordinvisibilitysecurity() {
 public void Login_TC18Showbutton() {
 	login.tppassword("Tsting@1234");
 	login.showbtn();
-	WebElement pvisiblity = driver.findElement(By.id("password"));
+	WebElement pvisiblity = getdriver().findElement(By.id("password"));
 	boolean pswrddots= pvisiblity.getAttribute("type").equals("text");
 	Assert.assertEquals(pswrddots, true);
 }
@@ -175,7 +175,7 @@ public void Login_TCinvalidpassword() {
 }
 @Test(priority=21)
 public void Login_20Emailmecheckboxcheck() throws InterruptedException {
-	js = (JavascriptExecutor)driver;
+	js = (JavascriptExecutor)getdriver();
 	js.executeScript("window.scrollBy(0,500)");
 	Thread.sleep(500);
 	login.checkboxMarket();
@@ -183,7 +183,7 @@ public void Login_20Emailmecheckboxcheck() throws InterruptedException {
 }
 @Test(priority=22)
 public void Login_TC21Emailmecheckboxuncheck() throws InterruptedException {
-	js = (JavascriptExecutor)driver;
+	js = (JavascriptExecutor)getdriver();
 	js.executeScript("window.scrollBy(0,500)");
 	Thread.sleep(100);
 	login.checkboxMarketunchec();
@@ -191,7 +191,7 @@ public void Login_TC21Emailmecheckboxuncheck() throws InterruptedException {
 }
 @Test(priority=23)
 public void Login_TC22CheckboxTandCchecked() throws InterruptedException {
-	js = (JavascriptExecutor)driver;
+	js = (JavascriptExecutor)getdriver();
 	js.executeScript("window.scrollBy(0,500)");
 	Thread.sleep(200);
 	login.checkboxTandC();
@@ -199,7 +199,7 @@ public void Login_TC22CheckboxTandCchecked() throws InterruptedException {
 }
 @Test(priority=24)
 public void Login_TC23CheckboxTandCuncheckedErr() throws InterruptedException {
-	js = (JavascriptExecutor)driver;
+	js = (JavascriptExecutor)getdriver();
 	js.executeScript("window.scrollBy(0,500)");
 	js.executeScript("window.scrollBy(0,400)");
 	Thread.sleep(200);
@@ -210,7 +210,7 @@ public void Login_TC23CheckboxTandCuncheckedErr() throws InterruptedException {
 }
 @Test(priority=25)
 public void Login_TCCheckboxTandCuncheckedErr() throws InterruptedException {
-	js = (JavascriptExecutor)driver;
+	js = (JavascriptExecutor)getdriver();
 	js.executeScript("window.scrollBy(0,500)");
 	Thread.sleep(200);
 	login.checkbox_Tandcunchecunchecked();
@@ -230,6 +230,6 @@ public void Screenshot(ITestResult result) {
 			e.printStackTrace();
 		}
 		}*/
-	driver.quit();
+	getdriver().quit();
 }
 }
